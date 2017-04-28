@@ -24,6 +24,14 @@ contract MetaCoin {
 		return true;
 	}
 
+    function transferCoin(address from, address to, uint amount) returns(bool) {
+	  if (balances[from] < amount) return false;
+      balances[from] -= amount;
+      balances[to] += amount;
+      Transfer(from, to, amount);
+      return true;
+    }
+
 	function getBalanceInEth(address addr) returns(uint){
 		return ConvertLib.convert(getBalance(addr),2);
 	}

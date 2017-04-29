@@ -56,6 +56,10 @@ contract Ballot {
     }
   }
 
+  function getVotingCost() returns(uint) {
+    return votingCost;
+  }
+
   function giveRightToVote(address voter) {
     if (msg.sender != chairperson || voters[voter].voted ) return;
     voters[voter].canVote = true;
